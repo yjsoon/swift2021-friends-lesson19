@@ -8,9 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var friends = [Friend(name: "Enzo",
+                          icon: "zzz",
+                          school: "Unknown sk00l",
+                          slothImage: "sloth3"),
+                   Friend(name: "Daksh",
+                          icon: "swift",
+                          school: "SST",
+                          slothImage: "sloth2"),
+                   Friend(name: "Celeste",
+                          icon: "wifi",
+                          school: "DHS",
+                          slothImage: "sloth1")]
+
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(friends) { friend in
+                NavigationLink(destination: FriendDetailView(friend: friend)) {
+                    Image(systemName: friend.icon)
+                    VStack(alignment: .leading) {
+                        Text(friend.name)
+                            .font(.headline)
+                        Text(friend.school)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+
+                }
+            }
+            .navigationTitle("Friends")
+        }
+
     }
 }
 
