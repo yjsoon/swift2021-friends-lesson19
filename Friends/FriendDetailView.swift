@@ -31,6 +31,19 @@ struct FriendDetailView: View {
                     .shadow(radius: 10)
                     .padding(.bottom, -profilePicSize/2 + 20)
                 
+                
+                HStack {
+                    ForEach(friend.types, id: \.rawValue) { type in
+                        Label(type.rawValue, systemImage: type.getSymbolName())
+                            .padding(10)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
+
+                
                 // Can also use HStack, or a Label
                 Text("\(Image(systemName: friend.icon)) \(friend.school)")
                     .font(.system(size: 24))
@@ -61,6 +74,6 @@ struct FriendDetailView_Previews: PreviewProvider {
         FriendDetailView(friend: .constant(Friend(name: "Yi Kai",
                                         icon: "wifi",
                                         school: "Another School",
-                                        slothImage: "sloth1")))
+                                        slothImage: "sloth1", types: [.ice, .water, .electric])))
     }
 }

@@ -13,6 +13,7 @@
 		AF04FFA4268FF178004D3E76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF04FFA3268FF178004D3E76 /* Preview Assets.xcassets */; };
 		AF04FFAC268FF1EC004D3E76 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04FFAB268FF1EC004D3E76 /* Friend.swift */; };
 		AF04FFAE268FF517004D3E76 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF04FFAD268FF517004D3E76 /* FriendDetailView.swift */; };
+		AF6EB6C4269931F100AEA396 /* FriendType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6EB6C3269931F100AEA396 /* FriendType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AF04FFA5268FF178004D3E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF04FFAB268FF1EC004D3E76 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		AF04FFAD268FF517004D3E76 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
+		AF6EB6C3269931F100AEA396 /* FriendType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		AF04FF9B268FF177004D3E76 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				AF6EB6C3269931F100AEA396 /* FriendType.swift */,
 				AF04FF9C268FF177004D3E76 /* FriendsApp.swift */,
 				AF04FF9E268FF177004D3E76 /* ContentView.swift */,
 				AF04FFAD268FF517004D3E76 /* FriendDetailView.swift */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6EB6C4269931F100AEA396 /* FriendType.swift in Sources */,
 				AF04FFAC268FF1EC004D3E76 /* Friend.swift in Sources */,
 				AF04FF9F268FF177004D3E76 /* ContentView.swift in Sources */,
 				AF04FF9D268FF177004D3E76 /* FriendsApp.swift in Sources */,

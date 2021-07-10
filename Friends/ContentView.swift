@@ -12,15 +12,19 @@ struct ContentView: View {
     @State var friends = [Friend(name: "Ritesh",
                           icon: "zzz",
                           school: "Unknown sk00l",
-                          slothImage: "sloth3"),
+                          slothImage: "sloth3",
+                          types: [.ice, .fire]),
                    Friend(name: "Yi Kai",
                           icon: "swift",
                           school: "Another School",
-                          slothImage: "sloth2"),
+                          slothImage: "sloth2",
+                          types: [.electric, .grass, .ice]),
                    Friend(name: "Hraday",
                           icon: "wifi",
                           school: "Yet Another School",
-                          slothImage: "sloth1")]
+                          slothImage: "sloth1",
+                          types: [.normal])
+                    ]
 
     
     var body: some View {
@@ -32,9 +36,18 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(friends[index].name)
                             .bold()
+                        
                         HStack {
                             Text(friends[index].school)
+                            
+                            Spacer()
+                            
+                            ForEach(friends[index].types, id: \.rawValue) { type in
+                                Image(systemName: type.getSymbolName())
+                            }
+
                         }
+                        .foregroundColor(.gray)
                     }
                 }
             }
