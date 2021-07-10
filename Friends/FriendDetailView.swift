@@ -12,7 +12,7 @@ let profilePicSize: CGFloat = 150
 
 struct FriendDetailView: View {
     
-    var friend: Friend
+    @Binding var friend: Friend
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,6 +36,19 @@ struct FriendDetailView: View {
                 .font(.system(size: 24))
                 .padding()
             
+            VStack(alignment: .leading) {
+                Text("Attack")
+                Slider(value: $friend.attack,
+                       in: 0...15,
+                       step: 1)
+                
+                Text("Defence")
+                Slider(value: $friend.defence,
+                       in: 0...15,
+                       step: 1)
+            }
+            .padding()
+
             Spacer()
         }
             .navigationTitle(friend.name)
@@ -44,9 +57,9 @@ struct FriendDetailView: View {
 
 struct FriendDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendDetailView(friend: Friend(name: "Celeste",
+        FriendDetailView(friend: .constant(Friend(name: "Yi Kai",
                                         icon: "wifi",
-                                        school: "DHS",
-                                        slothImage: "sloth1"))
+                                        school: "Another School",
+                                        slothImage: "sloth1")))
     }
 }

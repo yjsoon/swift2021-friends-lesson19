@@ -9,33 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var friends = [Friend(name: "Enzo",
+    @State var friends = [Friend(name: "Ritesh",
                           icon: "zzz",
                           school: "Unknown sk00l",
                           slothImage: "sloth3"),
-                   Friend(name: "Daksh",
+                   Friend(name: "Yi Kai",
                           icon: "swift",
-                          school: "SST",
+                          school: "Another School",
                           slothImage: "sloth2"),
-                   Friend(name: "Celeste",
+                   Friend(name: "Hraday",
                           icon: "wifi",
-                          school: "DHS",
+                          school: "Yet Another School",
                           slothImage: "sloth1")]
 
     
     var body: some View {
         NavigationView {
-            List(friends) { friend in
-                NavigationLink(destination: FriendDetailView(friend: friend)) {
-                    Image(systemName: friend.icon)
+            List (0..<friends.count) { index in
+                NavigationLink(destination: FriendDetailView(friend: $friends[index])) {
+                    Image(systemName: friends[index].icon)
+                    
                     VStack(alignment: .leading) {
-                        Text(friend.name)
-                            .font(.headline)
-                        Text(friend.school)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                        Text(friends[index].name)
+                            .bold()
+                        HStack {
+                            Text(friends[index].school)
+                        }
                     }
-
                 }
             }
             .navigationTitle("Friends")
