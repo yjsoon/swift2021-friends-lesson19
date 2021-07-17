@@ -10,50 +10,60 @@ import SwiftUI
 struct ContentView: View {
     
     @State var friends = [Friend(name: "Ritesh",
-                          icon: "zzz",
-                          school: "Unknown sk00l",
-                          slothImage: "sloth3",
-                          types: [.ice, .fire]),
-                   Friend(name: "Yi Kai",
-                          icon: "swift",
-                          school: "Another School",
-                          slothImage: "sloth2",
-                          types: [.electric, .grass, .ice]),
-                   Friend(name: "Hraday",
-                          icon: "wifi",
-                          school: "Yet Another School",
-                          slothImage: "sloth1",
-                          types: [.normal])
-                    ]
-
+                                 icon: "zzz",
+                                 school: "Unknown sk00l",
+                                 slothImage: "sloth3",
+                                 types: [.ice, .fire]),
+                          Friend(name: "Yi Kai",
+                                 icon: "swift",
+                                 school: "Another School",
+                                 slothImage: "sloth2",
+                                 types: [.electric, .grass, .ice]),
+                          Friend(name: "Hraday",
+                                 icon: "wifi",
+                                 school: "Yet Another School",
+                                 slothImage: "sloth1",
+                                 types: [.normal])
+    ]
+    
     
     var body: some View {
         NavigationView {
-            List (0..<friends.count) { index in
-                NavigationLink(destination: FriendDetailView(friend: $friends[index])) {
-                    Image(systemName: friends[index].icon)
-                    
-                    VStack(alignment: .leading) {
-                        Text(friends[index].name)
-                            .bold()
+            List {
+                ForEach(friends) { friend in
+                    let friendIndex = friends.firstIndex(of: friend)!
+                    NavigationLink(destination: FriendDetailView(friend: $friends[friendIndex])) {
+                        Image(systemName: friend.icon)
                         
-                        HStack {
-                            Text(friends[index].school)
+                        VStack(alignment: .leading) {
+                            Text(friend.name)
+                                .bold()
                             
-                            Spacer()
-                            
-                            ForEach(friends[index].types, id: \.rawValue) { type in
-                                Image(systemName: type.getSymbolName())
+                            HStack {
+                                Text(friend.school)
+                                
+                                Spacer()
+                                
+                                ForEach(friend.types, id: \.rawValue) { type in
+                                    Image(systemName: type.getSymbolName())
+                                }
+                                
                             }
-
+                            .foregroundColor(.gray)
                         }
-                        .foregroundColor(.gray)
                     }
+                }
+                .onDelete{ offsets in
+                    friends.remove(atOffsets: offsets)
+                }
+                .onMove { source, destination in
+                    friends.move(fromOffsets: source, toOffset: destination)
                 }
             }
             .navigationTitle("Friends")
+            .navigationBarItems(leading: EditButton())
         }
-
+        
     }
 }
 
