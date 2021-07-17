@@ -25,6 +25,7 @@ struct ContentView: View {
                                  slothImage: "sloth1",
                                  types: [.normal])
     ]
+    @State var isSheetPresented = false
     
     
     var body: some View {
@@ -61,7 +62,14 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Friends")
-            .navigationBarItems(leading: EditButton())
+            .navigationBarItems(leading: EditButton(),
+                                trailing: Button("Add Friend") {
+                                    isSheetPresented = true
+                                })
+            
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            NewFriendView(friends: $friends)
         }
         
     }
